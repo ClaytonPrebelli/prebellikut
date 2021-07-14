@@ -1,7 +1,38 @@
-import '../styles/globals.css'
+import { createGlobalStyle, ThemeProvider } from 'styled-components'
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+const GlobalStyle = createGlobalStyle`
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+  body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #D9E6F6;
+    font-family:san-serif;
+  }
+  #__next {
+    display:flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+`
+
+const theme = {
+  colors: {
+    primary: 'red',
+  },
 }
 
-export default MyApp
+export default function App({ Component, pageProps }) {
+  return (
+    <>
+      <GlobalStyle />
+      <ThemeProvider theme={theme}>
+        <Component {...pageProps} />
+      </ThemeProvider>
+    </>
+  )
+}
