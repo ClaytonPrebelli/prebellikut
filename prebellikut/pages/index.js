@@ -1,39 +1,58 @@
-import styled from 'styled-components'
+import  MainGrid  from '../src/components/MainGrid'
+import Box  from '../src/components/Box'
+import  { ProfileRelationsBoxWrapper } from '../src/components/ProfileRelations'
+import { AlurakutMenu } from '../src/lib/AlurakutCommons'
+function ProfileSidebar(propriedades) {
+  console.log(propriedades)
+  return (
+    <Box>
+    <img src={`https://github.com/${propriedades.githubUser}.png`} style={{ borderRadius: '8px'}}/>
+    <hr/>
+    <h1 className="boxLink">{`${propriedades.githubUser}`}</h1>
+    <p className="subTitle">{`Github Profile`}</p>
+  </Box>
+  )
+}
 
-const Box = styled.div`
-  background: #fff;
-  border-radius: 8px;
-  
-`
-const MainGrid = styled.main`
-  display: grid;
-  grid-gap: 10px;
-  padding: 16px;
-  @media (min-width: 860px) {
-    grid-template-area: "profileArea welcomeArea profileRelationshipArea";
-    grid-template-columns: 160px 618px 312px;
-  }
-`
 
 export default function Home() {
+  const githubUser = 'ClaytonPrebelli';
+  const pessoasFavoritas = ['juunegreiros', 'omariosouto', 'peas' ,'rafaballerini', 'marcobrunodev', 'felipefialho']
   return(
+    <>
+    <AlurakutMenu />
   <MainGrid>
-    <div style={{ gridArea: 'profileArea' }}>
-      <Box>
-      imagem
-      </Box>
+    <div className="profileArea"    style={{ gridArea: 'profileArea' }}>
+     <ProfileSidebar githubUser={githubUser}/>  
     </div>
-    <div style={{ gridArea: 'welcomeArea' }}>
+    <div className="welcomeArea" style={{ gridArea: 'welcomeArea' }}>
       <Box>
       Bem Vindo
       </Box>
     </div>
-    <div style={{ gridArea: 'profileRelationshipArea' }}>
-      <Box>
-      Comunidades
-      </Box>
+    <div className="profileRelationsArea" style={{ gridArea: 'profileRelationsArea' }}>
+        <ProfileRelationsBoxWrapper>
+          <h2 className="smallTitle">
+            Meus amigos <span className="boxLink">({pessoasFavoritas.length})</span>
+          </h2>
+         <ul>
+          {pessoasFavoritas.map((pessoa) => {
+            return(
+              <li>
+                <a href={`/users/${pessoa}`} key={pessoa}>
+                <img src={`https://github.com/${pessoa}.png`} />
+                <span>{pessoa}</span>
+              </a>
+              </li>
+            )})}
+          </ul>
+        </ProfileRelationsBoxWrapper>
+        <Box>
+          Comunidades
+         </Box>
     </div>
   </MainGrid>
+  </>
   )
   
 }
