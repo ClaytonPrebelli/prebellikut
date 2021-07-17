@@ -77,7 +77,7 @@ export default function Home() {
             return(
               <li>
                 <a href={`/users/${pessoa}`} key={pessoa}>
-                <img src={`http://placehold.it/300x300`} /> 
+                <img src={`http://placehold.it/300x300.png`} /> 
                 <span>{pessoa}</span>
               </a>
               </li>
