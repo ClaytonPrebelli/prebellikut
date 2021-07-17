@@ -64,7 +64,7 @@ export default function Home() {
           type="text"/>
        
         </div>
-        <button>Criar Comunidade</button>
+        <button>Criar Comunidadess</button>
 
         </form>
       </Box>
