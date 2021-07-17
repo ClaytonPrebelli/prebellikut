@@ -1,7 +1,7 @@
 import  MainGrid  from '../src/components/MainGrid'
 import Box  from '../src/components/Box'
 import  { ProfileRelationsBoxWrapper } from '../src/components/ProfileRelations'
-import { AlurakutMenu } from '../src/lib/AlurakutCommons'
+import { AlurakutMenu, OrkutNostalgicIconSet } from '../src/lib/AlurakutCommons'
 function ProfileSidebar(propriedades) {
   console.log(propriedades)
   return (
@@ -27,7 +27,10 @@ export default function Home() {
     </div>
     <div className="welcomeArea" style={{ gridArea: 'welcomeArea' }}>
       <Box>
-      Bem Vindo
+          <h1 className="title"> Bem Vindo</h1>
+
+
+          <OrkutNostalgicIconSet></OrkutNostalgicIconSet>
       </Box>
     </div>
     <div className="profileRelationsArea" style={{ gridArea: 'profileRelationsArea' }}>
